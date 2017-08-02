@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="css/index.css" />
+</head>
+
+<body>
+    <div id="create">
+        <input type="text" id="filename" />
+        <select id="filetype">
+            <option value="floder">文件夹</option>
+            <option value="txt">文本</option>
+            <option value="html">网页</option>
+        </select>
+        <button type="button" id="createBtn">创建</button>
+        <button id="rename">重命名</button>
+        <button id="del">删除</button>
+        <button id="remove">移动到</button>
+    </div>
+    <div id="mask"></div>
+    <div id="reNameInfo">1111111111</div>
+    <!--面包削导航-->
+    <div id="paths">
+        <a href="javascript:;" id="back">返回上一级</a>
+        <span>|</span>
+        <ul id="crumbs"></ul>
+    </div>
+    <div class="checkAll">
+        <label for="checkAll">
+        <input type="checkbox" id = "checkAll">
+        <span id='checkAllText'>全选</span>
+      
+        </label>
+        <span id="checkWrap" style="display:none">已选中当前文件夹下<span id="checknub"></span>个文件</span>
+
+    </div>
+    <input type="file" id="uploadBtn" />
+    <!--<ul id = 'contextmenu'>
+	<li>新建文件夹</li>
+	<li>删除</li
+	<li>排序</li>
+</ul>-->
+    <ul id='list'>
+        <li class="rubbish"></li>
+        <!--<li class="floder">
+		<p>默认文件夹</p>
+	</li>
+	<li class="txt">
+		<p>1.txt</p>
+	</li>
+	<li class="html">
+		<p>hello.html</p>
+	</li>-->
+    </ul>
+    <div id="fileDetail">
+        <div></div>
+        <a href="javascript:;" class="fileDetailCols">X</a>
+    </div>
+    <div id="newWindow"></div>
+    <div id="insteadOf">
+        <p>文件有重名</p>
+        <a href="javascript:;" class="merge">合并</a>
+        <a href="javascript:;" class="retain">保留</a>
+        <a href='javascript:;' class="close">X</a>
+    </div>
+    <div id='treeWrap'>
+        <h3>移动到</h3>
+        <div class="treeContent">
+        </div>
+        <a href="javascript:;">确定</a>
+        <a href='javascript:;'>取消</a>
+    </div>
+    <script src=" js/pinyin.js "></script>
+    <script src="js/m.touch.js "></script>
+    <script src="js/data.js "></script>
+    <script src="js/model.js "></script>
+    <script src="js/function.js "></script>
+    <script src="js/index.js "></script>
+
+</body>
+
+</html>
