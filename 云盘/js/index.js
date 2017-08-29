@@ -22,33 +22,41 @@ var elements = {
     retain: document.querySelector('#insteadOf .retain'),
     merge: document.querySelector('#insteadOf .merge'),
     remove: document.querySelector('#remove'),
-    treeContent: document.querySelector('.treeContent')
+    treeContent: document.querySelector('.treeContent'),
+    header: document.querySelector('.header'),
+    mainL: document.querySelector('.mainL'),
+    checkAlls: document.querySelector('.checkAll'),
+    mainR: document.querySelector('.mainR'),
+    detail: document.querySelector('.detail'),
+    hRight: document.querySelector('.hRight')
+
 }
 var _ID = 0;
 var timer = 0;
 var names = [];
 //渲染
 view(_ID);
-viewTree(_ID);
+
+// viewTree(_ID);
 
 var checkbox = elements.list.getElementsByTagName('input')
 var contextmenuId = null;
 elements.back.onmousedown = function(e) {
-    if (e.button == 2) {
-        return;
-    }
-    this.style.color = "red";
-    var info = getInfo(_ID);
-    if (info) {
-        view(info.pid)
-        cancelIco();
-    }
+        if (e.button == 2) {
+            return;
+        }
+        // this.style.color = "red";
+        var info = getInfo(_ID);
+        if (info) {
+            view(info.pid)
+            cancelIco();
+        }
 
 
-}
-elements.back.onmouseup = function() {
-        this.style.color = "blue";
     }
+    // elements.back.onmouseup = function() {
+    //         this.style.color = "blue";
+    //     }
     //新建文件，文件夹
 elements.createBtn.onclick = function(e) {
     if (elements.filename.value == '') {
@@ -61,22 +69,22 @@ elements.createBtn.onclick = function(e) {
         name: elements.filename.value
     })
 }
-elements.remove.onclick = function(e) {
-
-}
 elements.filename.onmousedown = function(e) {
     e.stopPropagation();
 }
-
+elements.filetype.onmousedown = function(e) {
+    e.stopPropagation();
+}
 
 document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
+    console.log(e.target)
     if (e.target.parentNode.tagName == 'LI') {
         contextmenuId = e.target.parentNode;
     } else if (e.target.parentNode.parentNode) {
         contextmenuId = e.target.parentNode.parentNode;
     }
-    if (e.target.parentNode.tagName == 'LI' || e.target.parentNode.parentNode && e.target.tagName != "UL") {
+    if (e.target.parentNode.tagName == 'LI' || e.target.parentNode.parentNode.tagName == "LI" && e.target.tagName != "BODY") {
         showContextmenu(e, data.menu.file);
 
     } else {
@@ -87,11 +95,12 @@ document.addEventListener('contextmenu', function(e) {
 })
 
 document.addEventListener('mousedown', function(e) {
-        hideContextmenu();
-        cancelActive();
-        cancelIco();
-    })
-    //重命名
+    hideContextmenu();
+    cancelActive();
+    cancelIco();
+})
+
+//重命名
 elements.rename.onclick = function() {
         var checkboxs = elements.list.querySelectorAll('.active');
         for (var i = 0; i < checkboxs.length; i++) {
@@ -130,13 +139,25 @@ elements.back.addEventListener('contextmenu', function(e) {
     e.preventDefault();
 
 });
-//全选
+elements.header.addEventListener('contextmenu', function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+})
+elements.mainL.addEventListener('contextmenu', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+    })
+    //全选
 elements.checkAll.onmousedown = function(e) {
     e.stopPropagation();
 }
 elements.checkAll.onclick = function(e) {
     e.stopPropagation();
 }
+elements.checkAlls.addEventListener('contextmenu', function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+})
 elements.checkAll.onchange = function() {
         var inputs = elements.list.querySelectorAll('.ico');;
         if (inputs.length == 0) {
@@ -173,4 +194,17 @@ elements.list.onmousedown = listdown;
 // })
 elements.close.onclick = function() {
     elements.insteadOf.style.display = "none";
+}
+
+//详情
+var isOn = true;
+elements.hRight.onclick = function() {
+    if (isOn) {
+        elements.detail.style.right = 0;
+        elements.detail.style.opacity = 100;
+    } else {
+        elements.detail.style.right = -301 + 'px';
+        elements.detail.style.opacity = 0;
+    }
+    isOn = !isOn;
 }

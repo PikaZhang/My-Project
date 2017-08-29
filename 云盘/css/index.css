@@ -1,8 +1,156 @@
-* {
-    margin: 0;
+@charset "utf-8";
+
+/*reset*/
+
+body {
+    font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif;
+}
+
+body * {
+    -webkit-text-size-adjust: 100%;
+    font-size: 0.12rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+strong {
+    font-size: 0.52rem;
+    color: #000;
+}
+
+span {
+    font-size: 0.4rem;
+    color: #686868;
+}
+
+input {
+    outline: none;
     padding: 0;
+}
+
+.clearFix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+body,
+html {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+
+body,
+h3,
+P,
+h1 {
+    margin: 0;
+}
+
+img {
+    border: none;
+    vertical-align: top;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
     list-style: none;
+}
+
+body {
+    -moz-user-select: none;
     user-select: none;
+    background-color: #eff4f8;
+}
+
+.header {
+    height: 62px;
+    background: #eff4f8;
+}
+
+#logo {
+    float: left;
+    background: url('../img/logo.png');
+    width: 142px;
+    height: 32px;
+    margin: 15px 0 0 20px;
+}
+
+.hRight {
+    float: right;
+    margin: 10px 20px 0 0;
+    cursor: pointer;
+}
+
+.hRight span:nth-of-type(2) {
+    padding: 8px;
+    display: inline-block;
+    font: 16px/24px "宋体";
+}
+
+.detail {
+    position: absolute;
+    right: -301px;
+    top: 62px;
+    width: 300px;
+    height: 400px;
+    border: 1px solid #ccc;
+    background: #fff;
+    padding: 10px;
+    transition: 1S;
+    opacity: 0;
+}
+
+.detail h2 {
+    text-indent: 32px;
+}
+
+.detail p {
+    font: 16px/26px "宋体";
+    text-indent: 32px;
+}
+
+main {
+    position: relative;
+    background: #eff4f8;
+}
+
+.mainL {
+    width: 193px;
+    background: #eff4f8;
+    position: absolute;
+    left: 0;
+    top: 0;
+    min-height: 700px;
+}
+
+.mainL .list li {
+    font: 12px/44px '宋体';
+    padding-left: 53px;
+    position: relative;
+}
+
+.mainL .list li span {
+    position: absolute;
+    left: 32px;
+    top: 16px;
+}
+
+.mainL .list li:hover {
+    background: #e4e9ec;
+}
+
+.mainR {
+    margin-left: 193px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 20px;
+    min-height: 700px;
+    background: #fff;
 }
 
 .contextmenu {
@@ -77,6 +225,11 @@
     text-align: center;
 }
 
+#filename {
+    width: 120px;
+    display: inline-block;
+}
+
 #list li div:nth-of-type(1).floder {
     background-position: 20px 10px;
 }
@@ -99,11 +252,13 @@
 
 #create {
     position: relative;
-    z-index: 1
+    z-index: 1;
+    padding: 10px 0 0 10px;
 }
 
 #crumbs {
     display: inline-block;
+    margin-top: 20px;
 }
 
 #crumbs li {
@@ -112,6 +267,11 @@
 
 #uploadBtn {
     display: none;
+}
+
+#filetype {
+    width: 100px;
+    display: inline-block;
 }
 
 #fileDetail {
@@ -189,10 +349,6 @@
     display: none;
 }
 
-#back {
-    color: blue;
-}
-
 .label {
     position: absolute;
     width: 20px;
@@ -232,6 +388,10 @@
     display: none;
 }
 
+#paths {
+    margin-left: 10px;
+}
+
 #insteadOf p {
     font: 50px/100px '宋体';
     margin: 50px 0 50px;
@@ -247,6 +407,23 @@
     position: absolute;
     right: 10px;
     top: 10px;
+}
+
+#back {
+    display: inline-block;
+    padding: 8px 15px;
+    color: #337ab7;
+    text-decoration: none;
+    background: #f5f5f5;
+}
+
+#back:hover {
+    color: #23527c;
+    text-decoration: underline;
+}
+
+.checkAll {
+    margin-left: 10px;
 }
 
 

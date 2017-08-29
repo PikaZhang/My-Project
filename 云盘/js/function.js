@@ -46,6 +46,10 @@ var contextmenuCallback = {
             });
             view(_ID)
         },
+        /**
+         * 
+         * 
+         */
         sortType: function() {
 
             var arr = [];
@@ -360,6 +364,7 @@ function view(pid) {
                 var nowNode = null; //克隆出来的新节点
                 var startX = e.clientX;
                 var startY = e.clientY;
+                console.log(startX, startY)
                 var self = this;
                 var cloneEls = [];
                 var selectNodes = [];
@@ -386,7 +391,7 @@ function view(pid) {
                             cloneEls.push(node);
                             var rect = activeNodes[i].getBoundingClientRect();
                             var l = rect.left;
-                            var t = rect.top;
+                            var t = rect.top - 62
                             selectNodes.push({
                                 left: l,
                                 topp: t
@@ -399,11 +404,14 @@ function view(pid) {
 
                             css(cloneEls[i], 'left', selectNodes[i].left)
                             css(cloneEls[i], 'top', selectNodes[i].topp)
+                            console.log(cloneEls[i].style.left, cloneEls[i].style.top)
                         }
+
 
                     }
                     var disX = e.clientX - startX;
                     var disY = e.clientY - startY;
+
                     for (var i = 0; i < cloneEls.length; i++) {
                         css(cloneEls[i], 'left', selectNodes[i].left + disX)
                         css(cloneEls[i], 'top', selectNodes[i].topp + disY)
@@ -514,9 +522,9 @@ function view(pid) {
     pathList.forEach(function(item) {
             var li = document.createElement('li');
             if (!item.extname) {
-                li.innerHTML = `<span>&gt;</span><a href = "javascript:;">${item.name}</a>`;
+                li.innerHTML = `<a href = "javascript:;">${item.name}</a>`;
             } else {
-                li.innerHTML = `<span>&gt;</span><a href = "javascript:;">${item.name}(${item.extname})</a>`;
+                li.innerHTML = `<a href = "javascript:;">${item.name}(${item.extname})</a>`;
             }
 
             li.onclick = function() {
@@ -534,9 +542,9 @@ function view(pid) {
     if (info) {
         var li = document.createElement('li');
         if (!info.extname) {
-            li.innerHTML = '<span>&gt;</span><span>' + info.name + '</span>'
+            li.innerHTML = '<span>' + info.name + '</span>'
         } else {
-            li.innerHTML = '<span>&gt;</span><span>' + info.name + '(' + info.extname + ')</span>'
+            li.innerHTML = '<span>' + info.name + '(' + info.extname + ')</span>'
         }
 
         elements.crumbs.appendChild(li);
@@ -615,6 +623,7 @@ function reName(newName) {
         var p = newName.children[2].children[0];
         var input = newName.children[2].children[1];
         p.style.display = "none";
+        input.parentNode.parentNode.style.background = "#f1f5fa"
         input.style.display = 'block';
         input.value = p.innerHTML;
         input.select();
@@ -691,6 +700,7 @@ function cancelActive() {
     var lis = elements.list.querySelectorAll('li');
     for (var i = 0; i < lis.length; i++) {
         lis[i].classList.remove("active");
+        lis[i].classList.remove("hover");
     }
 }
 
@@ -811,19 +821,19 @@ function listdown(e) {
     };
 };
 
-function viewTree() {
-    var allChildren = getTree(0);
-    console.log(allChildren)
-    elements.treeContent.innerHTML = '';
-    allChildren.forEach(function(item) {
-        // console.log(item)
-        var name = item.name;
-        var li = document.createElement('li');
-        for (var i = 0; i < item.level; i++) {
-            name = '&nbsp;&nbsp;&nbsp;&nbsp;' + name;
+// function viewTree() {
+//     var allChildren = getTree(0);
+//     console.log(allChildren)
+//     elements.treeContent.innerHTML = '';
+//     allChildren.forEach(function(item) {
+//         // console.log(item)
+//         var name = item.name;
+//         var li = document.createElement('li');
+//         for (var i = 0; i < item.level; i++) {
+//             name = '&nbsp;&nbsp;&nbsp;&nbsp;' + name;
 
-        }
-        li.innerHTML = name;
-        elements.treeContent.appendChild(li);
-    })
-}
+//         }
+//         li.innerHTML = name;
+//         elements.treeContent.appendChild(li);
+//     })
+// }

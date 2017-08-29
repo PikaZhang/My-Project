@@ -5,74 +5,114 @@
     <meta charset="utf-8" />
     <title></title>
     <link type="text/css" rel="stylesheet" href="css/index.css" />
+
+    <script src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <link type="text/css" rel="stylesheet" href='bootstrap/bootstrap.min.css' />
+
 </head>
 
 <body>
-    <div id="create">
-        <input type="text" id="filename" />
-        <select id="filetype">
-            <option value="floder">文件夹</option>
-            <option value="txt">文本</option>
-            <option value="html">网页</option>
-        </select>
-        <button type="button" id="createBtn">创建</button>
-        <button id="rename">重命名</button>
-        <button id="del">删除</button>
-        <button id="remove">移动到</button>
-    </div>
-    <div id="mask"></div>
-    <div id="reNameInfo">1111111111</div>
-    <!--面包削导航-->
-    <div id="paths">
-        <a href="javascript:;" id="back">返回上一级</a>
-        <span>|</span>
-        <ul id="crumbs"></ul>
-    </div>
-    <div class="checkAll">
-        <label for="checkAll">
-        <input type="checkbox" id = "checkAll">
-        <span id='checkAllText'>全选</span>
-      
-        </label>
-        <span id="checkWrap" style="display:none">已选中当前文件夹下<span id="checknub"></span>个文件</span>
-
-    </div>
-    <input type="file" id="uploadBtn" />
-    <!--<ul id = 'contextmenu'>
-	<li>新建文件夹</li>
-	<li>删除</li
-	<li>排序</li>
-</ul>-->
-    <ul id='list'>
-        <li class="rubbish"></li>
-        <!--<li class="floder">
-		<p>默认文件夹</p>
-	</li>
-	<li class="txt">
-		<p>1.txt</p>
-	</li>
-	<li class="html">
-		<p>hello.html</p>
-	</li>-->
-    </ul>
-    <div id="fileDetail">
-        <div></div>
-        <a href="javascript:;" class="fileDetailCols">X</a>
-    </div>
-    <div id="newWindow"></div>
-    <div id="insteadOf">
-        <p>文件有重名</p>
-        <a href="javascript:;" class="merge">合并</a>
-        <a href="javascript:;" class="retain">保留</a>
-        <a href='javascript:;' class="close">X</a>
-    </div>
-    <div id='treeWrap'>
-        <h3>移动到</h3>
-        <div class="treeContent">
+    <header class="clearFix header">
+        <h1 id="logo"></h1>
+        <nav class="hLeft"></nav>
+        <div class="hRight">
+            <span class="glyphicon glyphicon-hand-right"></span>
+            <span>鼠标点击查看详情</span>
         </div>
-        <a href="javascript:;">确定</a>
-        <a href='javascript:;'>取消</a>
+    </header>
+    <main class="clearFix">
+        <aside class="mainL">
+            <ul class="list">
+                <li><span class="glyphicon glyphicon-list-alt"></span>全部文件</li>
+                <li>图片</li>
+                <li>文档</li>
+                <li>视频</li>
+                <li>种子</li>
+                <li>音乐</li>
+                <li>其他</li>
+                <li><span class="glyphicon glyphicon-share"></span>我的分享</li>
+                <li><span class="glyphicon glyphicon-trash"></span>回收站</li>
+            </ul>
+        </aside>
+        <section class="mainR">
+            <div id="create">
+                <input type="text" class="form-control" id="filename">
+                <select id="filetype" class="form-control">
+                        <option value="floder">文件夹</option>
+                        <option value="text">文本</option>
+                        <option value="html">网页</option>
+                </select>
+                <button type="button" class="btn btn-info" id="createBtn">创建</button>
+                <button type="button" class="btn btn-info" id="rename">重命名</button>
+                <button type="button" class="btn btn-info" id="del">删除</button>
+                <!-- <button id="remove">移动到</button> -->
+            </div>
+            <div id="mask"></div>
+            <div id="reNameInfo">1111111111</div>
+            <!--面包削导航-->
+            <div id="paths">
+                <a href="javascript:;" id="back">返回上一级</a>
+                <span>|</span>
+                <ol class="breadcrumb" id="crumbs">
+
+                </ol>
+            </div>
+            <div class="checkAll">
+                <label for="checkAll">
+                    <input type="checkbox" id = "checkAll">
+                    <span id='checkAllText'>全选</span>
+                  
+                    </label>
+                <span id="checkWrap" style="display:none">已选中当前文件夹下<span id="checknub"></span>个文件</span>
+
+            </div>
+            <input type="file" id="uploadBtn" />
+            <!--<ul id = 'contextmenu'>
+                <li>新建文件夹</li>
+                <li>删除</li
+                <li>排序</li>
+            </ul>-->
+            <ul id='list'>
+                <li class="rubbish"></li>
+                <!--<li class="floder">
+                    <p>默认文件夹</p>
+                </li>
+                <li class="txt">
+                    <p>1.txt</p>
+                </li>
+                <li class="html">
+                    <p>hello.html</p>
+                </li>-->
+            </ul>
+            <div id="fileDetail">
+                <div></div>
+                <a href="javascript:;" class="fileDetailCols">X</a>
+            </div>
+            <div id="newWindow"></div>
+            <div id="insteadOf">
+                <p>文件有重名</p>
+                <a href="javascript:;" class="merge">合并</a>
+                <a href="javascript:;" class="retain">保留</a>
+                <a href='javascript:;' class="close">X</a>
+            </div>
+    </main>
+    <div class="detail">
+        <h2>简介</h2>
+        <p>这是一个简单的仿网盘页面，运用原生的JS，花费两周时间来完成</p>
+        <P>功能:新建文件夹，右键菜单，上传，排序（文件名，创建时间，文件类型），重命名，删除，刷新，路径条，全选，勾选，框选，拖拽，拖拽进入文件夹等等</p>
+        <p>制作周期较短，如在使用中发现bug，请见谅~</p>
     </div>
+    <!-- <div id='treeWrap'>
+                    <h3>移动到</h3>
+                    <div class="treeContent">
+                    </div>
+                    <a href="javascript:;">确定</a>
+                    <a href='javascript:;'>取消</a>
+                </div> -->
+    </section>
+
     <script src=" js/pinyin.js "></script>
     <script src="js/m.touch.js "></script>
     <script src="js/data.js "></script>
